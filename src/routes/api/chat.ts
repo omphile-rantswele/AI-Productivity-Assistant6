@@ -18,7 +18,7 @@ export const Route = createFileRoute("/api/chat")({
           model: gateway("google/gemini-3-flash-preview"),
           system:
             "You are an AI Workplace Productivity Assistant. Help professionals with workplace tasks: drafting emails, summarizing reports, planning projects, explaining business concepts. Be concise, friendly, and corporate-appropriate. Use Markdown for structure.",
-          messages: convertToModelMessages(messages),
+          messages: await convertToModelMessages(messages),
         });
         return result.toUIMessageStreamResponse({ originalMessages: messages });
       },
